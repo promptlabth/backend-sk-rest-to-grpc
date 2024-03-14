@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orch-grpc-deployment-deploy
+  namespace: petch
+spec:
+  selector:
+    matchLabels:
+      app: orch-grpc-deployment-deploy
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: orch-grpc-deployment-deploy
+    spec:
+      containers:
+      - name: test
+        image: asia-southeast1-docker.pkg.dev/prompt-lab-383408/testing-repo/test-client:v0.0.5
+        ports:
+        - containerPort: 8081
